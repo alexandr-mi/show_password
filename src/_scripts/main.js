@@ -7,6 +7,7 @@ const eye_frames = document.querySelector('#eye').children;
 const password_input = document.querySelector('.password__input');
 
 function showPassword() {
+  bg_after.classList.add('active');
   setTimeout(() => {
     password_input.type = 'text';
   }, 200);
@@ -15,11 +16,12 @@ function showPassword() {
   }, 300);
   setTimeout( () => {
     bg.style.background = 'white';
-  }, 500)
+  }, 450)
 }
 
 function hidePassword() {
   bg.style.background = 'black';
+  bg_after.classList.remove('active');
   setTimeout(() => {
     lock_icon.classList.toggle('active');
     password_input.type = 'password'
@@ -71,7 +73,6 @@ window.addEventListener('load', () => {
 
   eye_button.addEventListener('click', (e) => {
     if ( e.currentTarget.dataset.in_process === 'false' ) {
-      bg_after.classList.toggle('active');
 
       if ( e.currentTarget.dataset.state === 'close' ) {
         showPassword();
